@@ -18,7 +18,7 @@ body{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
         0 10px 10px rgba(0,0,0,0.22);
 }
-#espacio {
+#espacio{
     background-color: #5CDB95;
     border-radius: 50px 0px 0px 50px;
     text-align: center;
@@ -59,7 +59,7 @@ input {
 }
 
 button {
-  font-size: 16px;
+  font-size: 15px;
 	font-weight: bold;
 	padding: 12px 45px;
 	border-radius: 50px;
@@ -69,6 +69,7 @@ button {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	transition: transform 30ms ease-in;
+    margin-top: 5%;
 }
 
 button:active {
