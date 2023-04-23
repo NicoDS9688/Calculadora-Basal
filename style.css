@@ -91,8 +91,11 @@ button:active {
     display: none;
 }
 
-button:hover {
-    background-color: #9f1e49d3;
-    color: #fecd51;
-    }
 
+button:hover {background-color: #3e8e41}
+
+button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+}
