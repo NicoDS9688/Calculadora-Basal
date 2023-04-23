@@ -38,4 +38,3 @@ function calcFlujo(peso){
     return flujo;
 }
 
-function superficieCorporal(peso)
