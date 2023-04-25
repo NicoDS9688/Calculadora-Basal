@@ -1,80 +1,63 @@
-let dictionary = ['APPLE', 'HURLS', 'WINGS', 'YOUTH', 'ARROW', 'HOUSE', 'FORCE', 'BREAD', 'BREAK', 'AGENT'];
-let attempts= 5;
-const word = dictionary[Math.floor(Math.random() * dictionary.length)];
+const CALCULAR = document.getElementById('calcular');
+const ERROR = document.getElementById('error');
+const FLU = document.getElementById('flu');
+const MAN = document.getElementById('man');
 
+CALCULAR.addEventListener('click', () => {
+    const DATO = +document.getElementById('peso').value
 
-window.addEventListener('load', init);
+    if (DATO > 0 && DATO <= 30) {
+        ERROR.style.display = 'none'
+        let flujo = calcFlujo(DATO);
+        let mantenimiento = flujo * 1.5;
+        FLU.innerHTML = flujo + ' cc/hr';
+        MAN.innerHTML = 'm+m/2: ' + mantenimiento.toFixed(0) + ' cc/hr';
+        FLU.style.display = 'block';
+        MAN.style.display = 'block';
 
-function init(){
-    console.log('Esto se ejecuta solo cuando se carga la pagina web')
-}
+    } else if (DATO > 30) {
 
-const BUTTON = document.getElementById("guess-button");
-BUTTON.addEventListener("click", CHECK);
+        let flujo = calcFlujo(DATO);
+        let flujo1 = (flujo * 1500) / 24;
+        let flujo2 = (flujo * 2000) / 24;
+        let f1 = flujo1.toFixed(0);
+        let f2 = flujo2.toFixed(0);
+        FLU.innerHTML = 'SC1: ' + f1 + ' cc/hr';
+        MAN.innerHTML = 'SC2: ' + f2 + ' cc/hr';
+        FLU.style.display = 'block';
+        MAN.style.display = 'block';
 
-const INPUT = document.getElementById("guess-input");
-const VALUE = INPUT.value;
-
-function CHECK(){
-    const ATTEMPT = checkAttempt();
-    if (ATTEMPT === word) {
-
-        const GRID = document.getElementById("grid");
-        const ROW = document.createElement('div');
-        ROW.className = 'row';
-        for (let i in ATTEMPT){
-        const SPAN = document.createElement('span');
-                SPAN.className = 'letter';
-                SPAN.innerHTML = ATTEMPT[i];
-                    SPAN.style.backgroundColor = '#79b851';
-                    ROW.appendChild(SPAN);
-                }
-                GRID.appendChild(ROW);
-        finish("<h1>YOU WON!🎉</h>");
-        return 
+    } else {
+        ERROR.style.display = 'block';
+        FLU.style.display = 'none';
+        MAN.style.display = 'none';
     }
-    const GRID = document.getElementById("grid");
-        const ROW = document.createElement('div');
-        ROW.className = 'row';
-        for (let i in word){
-                const SPAN = document.createElement('span');
-                SPAN.className = 'letter';
 
-                if (ATTEMPT[i] === word[i]) {
-                    SPAN.innerHTML = ATTEMPT[i];
-                    SPAN.style.backgroundColor = '#79b851';
+})
 
-                } else if (word.includes(ATTEMPT[i])){ 
-                    SPAN.innerHTML = ATTEMPT[i];
-                    SPAN.style.backgroundColor = '#f3c237';
-
-                } else { 
-                    SPAN.innerHTML = ATTEMPT[i];
-                    SPAN.style.backgroundColor = '#a4aec4';
-                }
-                ROW.appendChild(SPAN);
-        }
-        GRID.appendChild(ROW);
-
-            attempts--
-    if (attempts==0){
-        finish("<h1>YOU LOST!💩</h1>");
+function calcFlujo(peso) {
+    let resto = peso;
+    let flujo = 0;
+    if (resto < 10) {
+        resto = resto * 100;
     }
+    else if (resto >= 10 && resto < 20) {
+        let aux;
+        aux = resto - 10;
+        resto = 1000 + (aux * 50);
+    }
+
+    else if (resto >= 20 && resto < 31) {
+        let aux;
+        aux = resto - 20;
+        resto = 1500 + (aux * 20);
+    }
+
+    else if (resto > 30) {
+        sc1 = ((resto * 4) + 7) / (resto + 90);
+        sc2 = resto;
+    }
+
+    flujo = resto / 24;
+    return flujo.toFixed(0);
 }
-
-function checkAttempt(){
-    let attempt = document.getElementById("guess-input");
-    attempt = attempt.value;
-    attempt = attempt.toUpperCase();
-    return attempt;
-}
-
-function finish(message){
-    const INPUT = document.getElementById("guess-input");
-    INPUT.disabled = true;
-    BUTTON.disabled = true;
-    let container = document.getElementById("guesses");
-    container.innerHTML = message;
-}
-
-
