@@ -1,101 +1,68 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-body{
-    background: #2f1b41; 
-    font-family: 'Montserrat', sans-serif;
-    color: #2f1b41;
-    
-    
-}
-#contenedor{
-    width: 900px;
-    height: 500px;
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-        0 10px 10px rgba(0,0,0,0.22);
-}
-#espacio{
-    background-color: #fecd51;
-    border-radius: 50px 0px 0px 50px;
+body {
+    font-family: Monospace, Arial, sans-serif, system-ui;
+  }
+     
+  h1 {
     text-align: center;
-    color: #9f1e49;
-    float: left;
-    width: 50%;
-    height: 100%;
-
-}
-#calculadora{
-    background: rgba(158, 196, 98, 0);
-    width: 100%;
-    height: 100%;
-    float: left;
-}
-
-#detalle{
-    background: #9f1e49;
-    border-radius: 0px 50px 50px 0px;
-    width: 50%;
-    height: 100%;
-    float: left;
-    color: #fecd51;
-}
-.contenido{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    overflow: hidden;
-    padding: 50px;
-}
-input {
-	width: 70%;
-    padding: 12px 15px;
-    border: 5px solid #9f1e49;
-    background-color: white;
-    border-radius: 50px;
-}
-
-button {
-  font-size: 15px;
-	font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-	padding: 12px 45px;
-	border-radius: 50px;
-	background-color: #9f1e49;
-	border: 3px solid #9f1e49;
-	color: #fecd51;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	transition: transform 30ms ease-in;
-    margin-top: 5%;
-}
-
-button:active {
-	transform: scale(0.90);
-}
-
-#error{
-    color: red;
+    margin-top: 50px;
+    font-size: 60px;
+  }
+     
+  #guess-input {
+    display: block;
     font-weight: bold;
-    display: none;
-}
-
-.resultado{
-    color: #9f1e49;
+    border-radius: 3px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    font-size: 18px;
+    width: 250px;
+    border: 3px solid #000000;
+  }
+     
+  #guess-button {
+    font-family: Monospace, Arial, sans-serif, system-ui;
     font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
     font-size: 25px;
-    margin-bottom: 5px;
-    display: none;
-}
+    background-color: #FF0000;
+    color: #fff;
+    border: 3px solid #000000;
+    border-radius: 3px;
+  }
+     
+  button:active {
+      transform: scale(0.95);
+  }
+     
+  .letter {
+      font-size: 35px;
+      font-weight: bold;
+      border: 3px solid #000000;
+      border-radius: 3px;
+      padding: 12px;
+      margin: 5px;
+      min-width: 20px;
+      text-align: center;
+      display: inline-block;
+  }
+     
+  .row{
+      margin-bottom: 10px;
+      margin-top: 20px;
+      text-align: center;
+  }
+     
+  .input-area{
+      margin: 30px;
+  }
 
-
-button:hover {background-color: #3e8e41}
-
-button:active {
-      background-color: #3e8e41;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-}
+  [data-emoji] {
+    font-style: normal;
+    font-weight: normal;
+  }
+  [data-emoji]:before {
+    content: attr(data-emoji);
+    margin-right: .125em;
+  }
